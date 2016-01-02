@@ -23,13 +23,10 @@ public class StudentController {
 
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	public String addStudent(@ModelAttribute("SpringWeb") Student student, ModelMap model) {
-		
 		studentDaoImpl.add(student);
-		
 		model.addAttribute("name", student.getName());
 		model.addAttribute("age", student.getAge());
 		model.addAttribute("id", student.getId());
-
 		return "result";
 	}
 	
@@ -40,11 +37,9 @@ public class StudentController {
 	
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
 	public String showStudents(ModelMap model) {
-		
 		List students = studentDaoImpl.getAll();
 		model.addAttribute("numberOfStudents", students.size());
 		model.addAttribute("studentList", students);
-
 		return "showAll";
 	}
 }
