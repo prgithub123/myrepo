@@ -23,7 +23,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/student", method = RequestMethod.GET)
 	public ModelAndView student() {
-		return new ModelAndView("student-bootstrap", "command", new Student());
+		return new ModelAndView("student", "command", new Student());
 	}
 
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
@@ -50,7 +50,7 @@ public class StudentController {
 		model.addAttribute("numberOfStudents", students.size());
 		model.addAttribute("studentList", students);
 
-		return "showAll-bootstrap";
+		return "showAll";
 	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
