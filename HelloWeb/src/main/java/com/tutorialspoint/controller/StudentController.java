@@ -21,11 +21,6 @@ public class StudentController {
 	@Autowired
 	StudentDaoInterface studentDaoImpl;
 
-	@RequestMapping(value = "/student", method = RequestMethod.GET)
-	public ModelAndView student() {
-		return new ModelAndView("student", "command", new Student());
-	}
-
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	public String addStudent(@ModelAttribute("SpringWeb") Student student, ModelMap model) {
 		
@@ -40,7 +35,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
 	public ModelAndView addStudent() {
-		return new ModelAndView("student", "command", new Student());
+		return new ModelAndView("addStudent", "command", new Student());
 	}
 	
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)

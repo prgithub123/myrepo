@@ -19,7 +19,7 @@
 	<div align="center">
 		<h1>Student repository</h1>
 		<a href="/HelloWeb/showAll">Pokaz wszystkich studentow</a> <br> 
-		<a href="/HelloWeb/student">Dodaj studenta</a> <br> <br>
+		<a href="/HelloWeb/addStudent">Dodaj studenta</a> <br> <br>
 	</div>
 
 </body>

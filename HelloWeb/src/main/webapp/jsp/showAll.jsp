@@ -18,7 +18,7 @@
 	<div class="container">
 		<h2>Lista studentów</h2>
 		<p>Liczba studentów: ${numberOfStudents}</p>
-		<p><button id="/student" onclick="location='student'" type="button" class="btn btn-success">Dodaj studenta</button></p>
+		<p><button id="/addStudent" onclick="location='addStudent'" type="button" class="btn btn-success">Dodaj studenta</button></p>
 		<table class="table">
 			<thead>
 				<tr>
