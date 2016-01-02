@@ -11,6 +11,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
+			
+				<!-- tytul -->
+				<h2>Dodawanie studenta</h2>
+			
+				<!-- formularz -->
 				<form class="form-horizontal" role="form" action="addStudent" method="post">
 
 					<div class="form-group">
@@ -41,10 +46,13 @@
 					</div>
 
 				</form>
+				
+				<!-- link -->
+				<a href="/HelloWeb/showAll">Pokaz wszystko</a>
 			</div>
 		</div>
 	</div>
 
-	<a href="/HelloWeb/showAll">Pokaz wszystko</a>
+	
 </body>
 </html>
