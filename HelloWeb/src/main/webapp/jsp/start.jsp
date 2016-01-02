@@ -20,7 +20,6 @@
 		<h1>Student repository</h1>
 		<a href="/HelloWeb/showAll">Pokaz wszystkich studentow</a> <br> 
 		<a href="/HelloWeb/student">Dodaj studenta</a> <br> <br>
-		<button type="button" class="btn btn-info">Info</button>
 	</div>
 
 </body>

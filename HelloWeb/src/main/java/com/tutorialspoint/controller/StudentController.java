@@ -40,7 +40,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
 	public ModelAndView addStudent() {
-		return student();
+		return new ModelAndView("student", "command", new Student());
 	}
 	
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
@@ -52,16 +52,4 @@ public class StudentController {
 
 		return "showAll";
 	}
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index() {
-		return "index";
-	}
-
-	@RequestMapping(value = "/finalPage", method = RequestMethod.GET)
-	public String finalPage() {
-
-		return "final";
-	}
-
 }
