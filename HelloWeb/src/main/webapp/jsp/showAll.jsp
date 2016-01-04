@@ -36,8 +36,8 @@
 						<td>${student.id}</td>
 						<td>${student.age}</td>
 						<td>${student.name}</td>
-						<td><a href="/edit?id=${student.id}">Edit</a>
-							&nbsp;&nbsp;&nbsp;&nbsp; <a href="/delete?id=${student.id}">Delete</a>
+						<td><a href="/HelloWeb/editStudent?id=${student.id}">Edit</a>
+							&nbsp;&nbsp;&nbsp;&nbsp; <a href="/HelloWeb/deleteStudent?id=${student.id}">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
