@@ -14,15 +14,21 @@ import com.tutorialspoint.Dao.interfaces.StudentDaoInterface;
 
 import org.springframework.ui.ModelMap;
 
+import org.apache.log4j.Logger;
+
 @Controller
 @RequestMapping("/")
 public class StudentController {
+	
+	final static Logger logger = Logger.getLogger(StudentController.class);
 	
 	@Autowired
 	StudentDaoInterface studentDaoImpl;
 
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	public String addStudent(@ModelAttribute("SpringWeb") Student student, ModelMap model) {
+		
+		logger.info("Dodawanie studenta: " + student.toString());
 		studentDaoImpl.add(student);
 		model.addAttribute("name", student.getName());
 		model.addAttribute("age", student.getAge());
