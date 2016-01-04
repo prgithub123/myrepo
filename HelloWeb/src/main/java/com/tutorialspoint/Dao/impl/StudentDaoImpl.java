@@ -35,4 +35,10 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		return getCurrentSession().createQuery("from Student").list();
 	}
 
+	@Override
+	public void delete(Student student) {
+		getCurrentSession().delete(student);
+		
+	}
+
 }

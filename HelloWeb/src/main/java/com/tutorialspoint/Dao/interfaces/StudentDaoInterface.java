@@ -8,5 +8,6 @@ public interface StudentDaoInterface {
 	
 	public Student add (Student student);
 	public List getAll();
+	public void delete (Student student);
 
 }

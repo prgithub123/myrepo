@@ -59,7 +59,9 @@ public class StudentController {
 	public String deleteStudent(@RequestParam("id") int studentId, ModelMap model) {
 		logger.info("deleteStudent: " + studentId);
 		model.addAttribute("id", studentId);
-		
+		Student s = new Student();
+		s.setId(studentId);
+		studentDaoImpl.delete(s);
 		return "deleteStudent";
 	}
 	
