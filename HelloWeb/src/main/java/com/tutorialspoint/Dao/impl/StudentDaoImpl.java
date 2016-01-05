@@ -2,6 +2,7 @@ package com.tutorialspoint.Dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,13 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 	@Override
 	public Student get(int studentId) {
-		String query = "from Student S where S.id = " + studentId;
-		if (getCurrentSession().createQuery(query).list().size() == 1) {
-			return (Student) getCurrentSession().createQuery(query).list().get(0);
+		String hql = "from Student S where S.id = :studentId";
+		Query query = getCurrentSession().createQuery(hql);
+		query.setParameter("studentId", studentId);
+		List results = query.list();
+
+		if (results.size() == 1) {
+			return (Student) results.get(0);
 		} else {
 			return null;
 		}
