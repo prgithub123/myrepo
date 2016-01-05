@@ -18,7 +18,12 @@
 	<div class="container">
 		<h2>Lista studentów</h2>
 		<p>Liczba studentów: ${numberOfStudents}</p>
-		<p><button id="/addStudent" onclick="location='addStudent'" type="button" class="btn btn-success">Dodaj studenta</button></p>
+		<p>
+			<button id="/addStudent" onclick="location='addStudent'"
+				type="button" class="btn btn-success">Dodaj studenta</button>
+		</p>
+		
+		<!-- table -->
 		<table class="table">
 			<thead>
 				<tr>
@@ -37,12 +42,30 @@
 						<td>${student.age}</td>
 						<td>${student.name}</td>
 						<td><a href="/HelloWeb/editStudent?id=${student.id}">Edit</a>
-							&nbsp;&nbsp;&nbsp;&nbsp; <a href="/HelloWeb/deleteStudent?id=${student.id}">Delete</a>
-						</td>
+							&nbsp;&nbsp;&nbsp;&nbsp; <a
+							href="/HelloWeb/deleteStudent?id=${student.id}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
+		
+		<!-- pagination (TODO: ponizej statyczny kontent) -->
+		<nav class="text-center">
+			<ul class="pagination" style="align-content: center">
+				<li><a href="#" aria-label="Previous"> <span
+						aria-hidden="true">&laquo;</span>
+				</a></li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+				</a></li>
+			</ul>
+		</nav>
+		
+		
 	</div>
 </body>
 </html>

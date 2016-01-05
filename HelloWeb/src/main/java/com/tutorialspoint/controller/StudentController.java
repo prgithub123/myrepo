@@ -50,8 +50,11 @@ public class StudentController {
 	
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
 	public String showStudents(ModelMap model) {
-		logger.info("showAll, " + studentDaoImpl.size() + " records");
-		logger.info("page size: " + pageSize);
+		long recordsNumber = studentDaoImpl.size();
+		int pageNumber = (int) Math.ceil(1.0 * recordsNumber / pageSize);
+		logger.info("showAll, " + recordsNumber + " records, " + pageSize + " records per page; "
+				+ pageNumber + " pages");
+		model.addAttribute("pageNumber", pageNumber);
 		
 		List<Student> students = studentDaoImpl.getAll();
 		model.addAttribute("numberOfStudents", students.size());
