@@ -34,6 +34,21 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	public List<Student> getAll() {
 		return (List<Student>) getCurrentSession().createQuery("from Student").list();
 	}
+	
+	/* Implementacja query: select * from Student limit x offset y
+	 * limit - pokazuj maksymalnie x rekordow
+	 * offset - rozpocznij od pozycji numer y (pierwszy wiersz jest indeksowany jako 0)
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Student> getAll(int limit, int offset) {
+		String hql = "from Student limit :limit offset :offset";
+		Query query = getCurrentSession().createQuery(hql);
+		query.setParameter("limit", limit);
+		query.setParameter("offset", offset);
+		List results = query.list();
+		return (List<Student>) results;
+	}
 
 	@Override
 	public void delete(Student student) {
@@ -58,5 +73,4 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	public void update(Student student) {
 		getCurrentSession().update(student);
 	}
-
 }
