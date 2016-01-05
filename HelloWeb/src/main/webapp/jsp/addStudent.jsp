@@ -16,7 +16,7 @@
 				<h2>Dodawanie studenta</h2>
 			
 				<!-- formularz -->
-				<form class="form-horizontal" role="form" action="addStudent" method="post">
+				<form class="form-horizontal" role="form" action="addStudent" method="post" data-toggle="validator">
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Name:</label>
@@ -28,14 +28,16 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Age:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="age" name="age" placeholder="Age">
+							<input type="number" class="form-control" id="age" name="age" placeholder="Age"
+							title="Wiek powinien być wartością z przedziału 0 - 200" min="0" max="200">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Id:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="id" name="id" placeholder="Id">
+							<input type="number" class="form-control" id="id" name="id" placeholder="Id"
+							title="Identyfikator powinien być wartością z przedziału 0 - 999999" min="0" max="999999">
 						</div>
 					</div>
 

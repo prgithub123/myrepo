@@ -16,7 +16,7 @@
 				<h2>Edycja danych studenta</h2>
 			
 				<!-- formularz -->
-				<form class="form-horizontal" role="form" action="editStudent" method="post">
+				<form class="form-horizontal" role="form" action="editStudent" method="post" data-toggle="validator">
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Name:</label>
@@ -28,14 +28,21 @@
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Age:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="age" name="age" placeholder="Age" value="${age}">
+							<input type="number" class="form-control" id="age" name="age" placeholder="Age" value="${age}"
+							title="Wiek powinien być wartością z przedziału 0 - 200" min="0" max="200">
 						</div>
 					</div>
 
+					<!-- identyfikator nie podlega zmianom, stad parametr readonly
+					Parametr "disabled" na polu "input" nie zadziala z nastepujacego powodu:
+					Elements with Disabled attribute are not submitted or you can say their values are not posted
+					Dlatego ich wartosc nigdy nie jest wysylana do HTTP POST 
+					(proba pobrania takiej liczby objawi sie wartoscia zero)
+					 -->
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Id:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="id" name="id" placeholder="Id" value="${id}">
+							<input class="form-control" id="id" name="id" placeholder="Id" value="${id}" readonly="readonly">
 						</div>
 					</div>
 

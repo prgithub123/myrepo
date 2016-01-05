@@ -77,7 +77,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/editStudent", method = RequestMethod.POST)
 	public String editStudent(@ModelAttribute("SpringWeb") Student student, ModelMap model) {
-		logger.info("editStudent (POST): " + student.toString());
+		logger.info("editStudent (POST): " + student);
 		studentDaoImpl.update(student);
 		model.addAttribute("name", student.getName());
 		model.addAttribute("age", student.getAge());
