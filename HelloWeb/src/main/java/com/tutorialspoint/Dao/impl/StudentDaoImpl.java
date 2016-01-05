@@ -1,5 +1,6 @@
 package com.tutorialspoint.Dao.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlTransient;
@@ -31,14 +32,13 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	}
 
 	@Override
-	public List getAll() {
-		return getCurrentSession().createQuery("from Student").list();
+	public List<Student> getAll() {
+		return (List<Student>) getCurrentSession().createQuery("from Student").list();
 	}
 
 	@Override
 	public void delete(Student student) {
 		getCurrentSession().delete(student);
-		
 	}
 
 	@Override
