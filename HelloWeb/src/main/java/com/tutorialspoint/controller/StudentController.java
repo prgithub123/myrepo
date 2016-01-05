@@ -26,11 +26,11 @@ public class StudentController {
 	@Autowired
 	StudentDaoInterface studentDaoImpl;
 
+	//addStudent  GET: wyswietla okno danych do dodania
+	//addStudent POST: obsluguje dodanie danych do bazy
 	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
 	public String addStudent(@ModelAttribute("SpringWeb") Student student, ModelMap model) {
-		
-		logger.info("addStudent: " + student.toString());
-		
+		logger.info("addStudent (POST): " + student);
 		studentDaoImpl.add(student);
 		model.addAttribute("name", student.getName());
 		model.addAttribute("age", student.getAge());
@@ -40,15 +40,13 @@ public class StudentController {
 	
 	@RequestMapping(value = "/addStudent", method = RequestMethod.GET)
 	public ModelAndView addStudent() {
-		
-		logger.info("addStudent: (bezparametrowy)");
+		logger.info("addStudent (GET)");
 		return new ModelAndView("addStudent", "command", new Student());
 	}
 	
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
 	public String showStudents(ModelMap model) {
 		logger.info("showAll");
-		
 		List students = studentDaoImpl.getAll();
 		model.addAttribute("numberOfStudents", students.size());
 		model.addAttribute("studentList", students);
@@ -63,6 +61,28 @@ public class StudentController {
 		s.setId(studentId);
 		studentDaoImpl.delete(s);
 		return "deleteStudent";
+	}
+	
+	//editStudent  GET: wyswietla okno danych do edycji
+	//editStudent POST: obsluguje aktualizacje danych
+	@RequestMapping(value = "/editStudent", method = RequestMethod.GET)
+	public String editStudent(@RequestParam("id") int studentId, ModelMap model) {
+		Student s = studentDaoImpl.get(studentId);
+		logger.info("editStudent (GET): " + s);
+		model.addAttribute("id", studentId);
+		model.addAttribute("age", s.getAge());
+		model.addAttribute("name", s.getName());
+		return "editStudent";
+	}
+	
+	@RequestMapping(value = "/editStudent", method = RequestMethod.POST)
+	public String editStudent(@ModelAttribute("SpringWeb") Student student, ModelMap model) {
+		logger.info("editStudent (POST): " + student.toString());
+		studentDaoImpl.update(student);
+		model.addAttribute("name", student.getName());
+		model.addAttribute("age", student.getAge());
+		model.addAttribute("id", student.getId());
+		return "result";
 	}
 	
 }

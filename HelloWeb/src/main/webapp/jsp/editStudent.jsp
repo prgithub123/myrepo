@@ -13,35 +13,35 @@
 			<div class="col-lg-12">
 			
 				<!-- tytul -->
-				<h2>Dodawanie studenta</h2>
+				<h2>Edycja danych studenta</h2>
 			
 				<!-- formularz -->
-				<form class="form-horizontal" role="form" action="addStudent" method="post">
+				<form class="form-horizontal" role="form" action="editStudent" method="post">
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Name:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="name" name="name" placeholder="Name">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Name" value="${name}">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Age:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="age" name="age" placeholder="Age">
+							<input type="text" class="form-control" id="age" name="age" placeholder="Age" value="${age}">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="control-label col-lg-2" for="text">Id:</label>
 						<div class="col-lg-10">
-							<input type="text" class="form-control" id="id" name="id" placeholder="Id">
+							<input type="text" class="form-control" id="id" name="id" placeholder="Id" value="${id}">
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-lg-offset-2 col-lg-10">
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="submit" class="btn btn-default">Zmien</button>
 						</div>
 					</div>
 

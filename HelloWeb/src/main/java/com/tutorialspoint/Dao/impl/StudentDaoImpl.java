@@ -41,4 +41,19 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		
 	}
 
+	@Override
+	public Student get(int studentId) {
+		String query = "from Student S where S.id = " + studentId;
+		if (getCurrentSession().createQuery(query).list().size() == 1) {
+			return (Student) getCurrentSession().createQuery(query).list().get(0);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public void update(Student student) {
+		getCurrentSession().update(student);
+	}
+
 }
