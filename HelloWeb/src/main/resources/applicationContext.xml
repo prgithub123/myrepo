@@ -12,12 +12,16 @@
            http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/task  
-        http://www.springframework.org/schema/task/spring-task-4.0.xsd"
+        http://www.springframework.org/schema/task/spring-task-4.0.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd"
 	xmlns:tx="http://www.springframework.org/schema/tx" 
-	xmlns:task="http://www.springframework.org/schema/task">
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:util="http://www.springframework.org/schema/util">
 
 	<context:component-scan base-package="com.tutorialspoint" />
 	<context:property-placeholder location="classpath:hibernate.properties" />
+	<util:properties id="myProps" location="classpath:application.properties" />
 	
 	<mvc:annotation-driven />
 	<tx:annotation-driven transaction-manager="transactionManager" />

@@ -3,6 +3,7 @@ package com.tutorialspoint.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ public class StudentController {
 	
 	@Autowired
 	StudentDaoInterface studentDaoImpl;
+	
+	@Value("#{myProps['paging.page-size']}")
+    private int pageSize;
 
 	//addStudent  GET: wyswietla okno danych do dodania
 	//addStudent POST: obsluguje dodanie danych do bazy
@@ -47,6 +51,8 @@ public class StudentController {
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
 	public String showStudents(ModelMap model) {
 		logger.info("showAll, " + studentDaoImpl.size() + " records");
+		logger.info("page size: " + pageSize);
+		
 		List<Student> students = studentDaoImpl.getAll();
 		model.addAttribute("numberOfStudents", students.size());
 		model.addAttribute("studentList", students);
