@@ -1,9 +1,6 @@
 package com.tutorialspoint.Dao.impl;
 
-import java.util.Collections;
 import java.util.List;
-
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -31,6 +28,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		return student;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> getAll() {
 		return (List<Student>) getCurrentSession().createQuery("from Student").list();
