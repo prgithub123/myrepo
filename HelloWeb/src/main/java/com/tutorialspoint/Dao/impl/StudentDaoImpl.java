@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,15 +63,23 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		query.setParameter("studentId", studentId);
 		List results = query.list();
 
-		if (results.size() == 1) {
+		if (results.size() == 1)
 			return (Student) results.get(0);
-		} else {
-			return null;
-		}
+		return null;
 	}
 
 	@Override
 	public void update(Student student) {
 		getCurrentSession().update(student);
+	}
+
+	@Override
+	public long size() {
+		String hql = "select count(*) from Student";
+		Query query = getCurrentSession().createQuery(hql);
+		List results = query.list();
+		if (results.size() == 1)
+			return (long) results.get(0);
+		return 0;
 	}
 }

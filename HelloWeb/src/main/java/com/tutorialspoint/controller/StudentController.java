@@ -46,7 +46,7 @@ public class StudentController {
 	
 	@RequestMapping(value = "/showAll", method = RequestMethod.GET)
 	public String showStudents(ModelMap model) {
-		logger.info("showAll");
+		logger.info("showAll, " + studentDaoImpl.size() + " records");
 		List<Student> students = studentDaoImpl.getAll();
 		model.addAttribute("numberOfStudents", students.size());
 		model.addAttribute("studentList", students);
