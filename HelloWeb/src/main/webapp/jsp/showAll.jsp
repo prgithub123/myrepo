@@ -23,7 +23,7 @@
 				type="button" class="btn btn-success">Dodaj studenta</button>
 		</p>
 		
-		<!-- table -->
+		<!-- Tabela -->
 		<table class="table">
 			<thead>
 				<tr>
@@ -49,19 +49,29 @@
 			</tbody>
 		</table>
 		
-		<!-- pagination (TODO: ponizej statyczny kontent) -->
+		<!-- Pagination -->
 		<nav class="text-center">
 			<ul class="pagination" style="align-content: center">
-				<li><a href="#" aria-label="Previous"> <span
-						aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
+				
+				<!-- Przycisk Previous -->
+				<li class="<c:out value="${currentPage != 1 ? 'active': 'disabled'}"/>">
+					<a href="/HelloWeb/showAll?page=${currentPage - 1}" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				
+				<!-- Przyciski numeryczne -->
+				<c:forEach var="i" begin="1" end="${numberOfPages}">
+					<li><a href="/HelloWeb/showAll?page=${i}">${i}</a></li>
+				</c:forEach>
+				
+				<!-- Przycisk Next -->
+				<li class="<c:out value="${currentPage lt numberOfPages ? 'active': 'disabled'}"/>">
+					<a href="/HelloWeb/showAll?page=${currentPage + 1}" aria-label="Next"> 
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+				
 			</ul>
 		</nav>
 		

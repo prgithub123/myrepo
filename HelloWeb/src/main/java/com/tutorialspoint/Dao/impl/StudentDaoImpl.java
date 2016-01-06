@@ -2,6 +2,7 @@ package com.tutorialspoint.Dao.impl;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tutorialspoint.Dao.db.Student;
 import com.tutorialspoint.Dao.interfaces.StudentDaoInterface;
+import com.tutorialspoint.controller.StudentController;
 
 @Transactional
 @Repository
@@ -19,6 +21,8 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	final static Logger logger = Logger.getLogger(StudentDaoImpl.class);
 	
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
@@ -43,10 +47,11 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> getAll(int limit, int offset) {
-		String hql = "from Student limit :limit offset :offset";
-		Query query = getCurrentSession().createQuery(hql);
-		query.setParameter("limit", limit);
-		query.setParameter("offset", offset);
+		logger.info("limit " + limit + ", offset " + offset);
+		
+		Query query = getCurrentSession().createQuery("from Student");
+		query.setFirstResult(offset);
+		query.setMaxResults(limit);
 		List results = query.list();
 		return (List<Student>) results;
 	}
