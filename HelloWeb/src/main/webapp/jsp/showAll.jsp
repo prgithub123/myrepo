@@ -8,9 +8,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <title>Lista studentów</title>
 </head>
@@ -22,7 +25,7 @@
 			<button id="/addStudent" onclick="location='addStudent'"
 				type="button" class="btn btn-success">Dodaj studenta</button>
 		</p>
-		
+
 		<!-- Tabela -->
 		<table class="table">
 			<thead>
@@ -37,45 +40,66 @@
 			<tbody style="font-size: 80%">
 				<c:forEach var="student" items="${studentList}" varStatus="status">
 					<tr>
-						<td>${status.index + 1}</td>
+						<td>${(currentPage - 1) * pageSize + status.index + 1}</td>
 						<td>${student.id}</td>
 						<td>${student.age}</td>
 						<td>${student.name}</td>
-						<td><a href="/HelloWeb/editStudent?id=${student.id}">Edit</a>
-							&nbsp;&nbsp;&nbsp;&nbsp; <a
-							href="/HelloWeb/deleteStudent?id=${student.id}">Delete</a></td>
+						<td>
+							<a href="/HelloWeb/editStudent?id=${student.id}">Edit</a>
+							&nbsp;&nbsp;&nbsp;&nbsp; 
+							<a href="/HelloWeb/deleteStudent?id=${student.id}">Delete</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		
+
 		<!-- Pagination -->
 		<nav class="text-center">
 			<ul class="pagination" style="align-content: center">
 				
 				<!-- Przycisk Previous -->
-				<li class="<c:out value="${currentPage != 1 ? 'active': 'disabled'}"/>">
-					<a href="/HelloWeb/showAll?page=${currentPage - 1}" aria-label="Previous">
-						<span aria-hidden="true">&laquo;</span>
-					</a>
-				</li>
-				
+				<c:choose>
+					<c:when test="${currentPage==1}">
+						<li class="disable">
+							<span aria-hidden="true">&laquo;</span>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li>
+							<a href="/HelloWeb/showAll?page=${currentPage - 1}" aria-label="Previous"> 
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
+
 				<!-- Przyciski numeryczne -->
 				<c:forEach var="i" begin="1" end="${numberOfPages}">
-					<li><a href="/HelloWeb/showAll?page=${i}">${i}</a></li>
+					<li class="<c:out value="${currentPage eq i ? 'active': ''}"/>"><a
+						href="/HelloWeb/showAll?page=${i}">${i}</a></li>
 				</c:forEach>
-				
+
 				<!-- Przycisk Next -->
-				<li class="<c:out value="${currentPage lt numberOfPages ? 'active': 'disabled'}"/>">
-					<a href="/HelloWeb/showAll?page=${currentPage + 1}" aria-label="Next"> 
-						<span aria-hidden="true">&raquo;</span>
-					</a>
-				</li>
+				<c:choose>
+					<c:when test="${currentPage==numberOfPages}">
+						<li class="disable">
+							<span aria-hidden="true">&raquo;</span>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li>
+							<a href="/HelloWeb/showAll?page=${currentPage + 1}" aria-label="Previous"> 
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</c:otherwise>
+				</c:choose>
 				
 			</ul>
 		</nav>
-		
-		
+
+
 	</div>
 </body>
 </html>

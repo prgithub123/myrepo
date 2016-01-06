@@ -58,6 +58,7 @@ public class StudentController {
 		List<Student> students = studentDaoImpl.getAll(pageSize, (currentPage-1) * pageSize);
 		model.addAttribute("numberOfPages", numberOfPages);
 		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("pageSize", pageSize);
 		model.addAttribute("numberOfStudents", numberOfRecords);
 		model.addAttribute("studentList", students);
 		
