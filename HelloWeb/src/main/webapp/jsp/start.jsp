@@ -12,15 +12,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+<style>
+    .jumbotron {
+    	background-color: #85e085;
+    }
+</style>
+
 <title>Lista studentow</title>
+
 </head>
-<body>
+<body style="padding-top: 30px">
 
-	<div align="center">
-		<h1>Student repository</h1>
-		<a href="/HelloWeb/showAll">Pokaz wszystkich studentow</a> <br> 
-		<a href="/HelloWeb/addStudent">Dodaj studenta</a> <br> <br>
+	<div class="container">
+		<div class="jumbotron text-center">
+			<h2>Students Repository Application</h2> 
+			<br>
+			<a href="/HelloWeb/showAll" class="btn btn-success btn-block" role="button">Lista studentów</a>
+			<a href="/HelloWeb/addStudent" class="btn btn-success btn-block" role="button">Dodaj studenta</a>
+		</div>
 	</div>
-
+	
 </body>
 </html>
