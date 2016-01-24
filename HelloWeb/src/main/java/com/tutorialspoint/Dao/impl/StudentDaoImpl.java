@@ -2,7 +2,8 @@ package com.tutorialspoint.Dao.impl;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,7 +23,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	final static Logger logger = Logger.getLogger(StudentDaoImpl.class);
+	final static Logger logger = LoggerFactory.getLogger(StudentDaoImpl.class);
 	
 	private Session getCurrentSession() {
 		return sessionFactory.getCurrentSession();
@@ -43,6 +44,8 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	/* Implementacja query: select * from Student limit x offset y
 	 * limit - pokazuj maksymalnie x rekordow
 	 * offset - rozpocznij od pozycji numer y (pierwszy wiersz jest indeksowany jako 0)
+	 * HQL nie obsluguje parametrow :limit oraz :offset -> nalezy uzyc funkcji
+	 * setFirstResult oraz setMaxResults
 	 */
 	@SuppressWarnings("unchecked")
 	@Override

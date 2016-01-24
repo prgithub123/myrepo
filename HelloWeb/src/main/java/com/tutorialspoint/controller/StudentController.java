@@ -16,13 +16,14 @@ import com.tutorialspoint.Dao.interfaces.StudentDaoInterface;
 
 import org.springframework.ui.ModelMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 @RequestMapping("/")
 public class StudentController {
 	
-	final static Logger logger = Logger.getLogger(StudentController.class);
+	final static Logger logger = LoggerFactory.getLogger(StudentController.class);
 	
 	@Autowired
 	StudentDaoInterface studentDaoImpl;
