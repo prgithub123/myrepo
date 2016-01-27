@@ -1,5 +1,5 @@
 
-package hello;
+package app;
 
 import hello.wsdl.GetCityForecastByZIPResponse;
 

@@ -57,7 +57,7 @@
 					<clearOutputDir>false</clearOutputDir>
 					<generateDirectory>src/main/java</generateDirectory>
 					<strict>true</strict>
-				</configuration>
+				</configuration> 
 
 				<!-- generacja WSDL na podstawie URL --> 
 				<!-- 
